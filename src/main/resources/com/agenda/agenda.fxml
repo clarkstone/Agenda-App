@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
+      fx:controller="com.agenda.controller.AgendaController" spacing="10" 
+      style="-fx-padding: 20; -fx-background-color: #f5f5f5;">
+    
+    <children>
+        <!-- Header with Date Navigation -->
+        <HBox spacing="10" alignment="CENTER">
+            <children>
+                <Button fx:id="previousDateButton" text="← Previous" 
+                        style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+                <Label fx:id="currentDateLabel" text="Current Date" 
+                       style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                <Button fx:id="nextDateButton" text="Next →" 
+                        style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+                <Button fx:id="todayButton" text="Today" 
+                        style="-fx-background-color: #FF9800; -fx-text-fill: white;"/>
+            </children>
+        </HBox>
+
+        <!-- Task Input Section -->
+        <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 15; -fx-border-radius: 5;">
+            <children>
+                <Label text="Add New Task" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <children>
+                        <TextField fx:id="descriptionField" promptText="Task description..." 
+                                   HBox.hgrow="ALWAYS" prefWidth="300"/>
+                        <DatePicker fx:id="dueDatePicker" promptText="Due date"/>
+                        <ComboBox fx:id="priorityComboBox" prefWidth="100"/>
+                        <Button fx:id="addTaskButton" text="Add Task" onAction="#addTask"
+                                style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+
+        <!-- Task Table -->
+        <VBox VBox.vgrow="ALWAYS">
+            <children>
+                <Label text="Tasks for Selected Date" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <TableView fx:id="taskTableView" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="descriptionColumn" text="Description" prefWidth="300"/>
+                        <TableColumn fx:id="dueDateColumn" text="Due Date" prefWidth="150"/>
+                        <TableColumn fx:id="statusColumn" text="Status" prefWidth="100"/>
+                        <TableColumn fx:id="actionsColumn" text="Actions" prefWidth="150"/>
+                    </columns>
+                </TableView>
+            </children>
+        </VBox>
+    </children>
+</VBox>
